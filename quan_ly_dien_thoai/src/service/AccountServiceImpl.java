@@ -82,6 +82,20 @@ public class AccountServiceImpl implements AccountService {
         return update;
     }
 
+    public boolean updatePassword(Account account){
+        boolean update = false;
+        String query = "Call updatePassword(?,?)";
+        try(Connection connection = getConnection();
+            CallableStatement callableStatement = connection.prepareCall(query)){
+            callableStatement.setInt(1,account.getId());
+            callableStatement.setString(2,account.getPassword());
+            update = callableStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return update;
+    }
+
     @Override
     public Account selectAccount(int id) {
         Account account = null;

@@ -70,6 +70,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/login?action=view&id=${account.getId()}">Thông tin tài khoản (<c:out value="${account.getName()}"/>) </a>
                         <a class="dropdown-item" href="/login?action=update&id=${account.getId()}">Cập nhật thông tin tài khoản</a>
+                        <a class="dropdown-item" href="/login?action=password&id=${account.getId()}">Đổi mật khẩu</a>
                         <a class="dropdown-item" href="/login?action=logout">Đăng xuất</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>

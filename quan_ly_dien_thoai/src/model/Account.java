@@ -20,6 +20,11 @@ public class Account {
         this.email = email;
     }
 
+    public Account(int id, String password) {
+        this.id = id;
+        this.password = password;
+    }
+
     public Account(String name, String phoneNumber, String address, String email, String username, String password) {
         this.name = name;
         this.phoneNumber = phoneNumber;

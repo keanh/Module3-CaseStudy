@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Admin
-  Date: 15/04/2020
-  Time: 9:39 CH
+  Date: 18/04/2020
+  Time: 11:52 CH
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -15,7 +15,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <title>Information Of Smart Phone</title>
+    <title>Update Account</title>
     <link rel="stylesheet" href="/view/home.css" type="text/css">
 </head>
 <body>
@@ -70,7 +70,6 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/login?action=view&id=${account.getId()}">Thông tin tài khoản (<c:out value="${account.getName()}"/>) </a>
                         <a class="dropdown-item" href="/login?action=update&id=${account.getId()}">Cập nhật thông tin tài khoản</a>
-                        <a class="dropdown-item" href="/login?action=password&id=${account.getId()}">Đổi mật khẩu</a>
                         <a class="dropdown-item" href="/login?action=logout">Đăng xuất</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
@@ -87,76 +86,25 @@
     </nav>
     <div class="row">
         <article class="col-sm-9">
-            <caption><h3 align="center">Thông tin sản phẩm</h3></caption>
+            <caption><h3 align="center">Cập nhật tài khoản</h3></caption>
             <form method="post">
                 <table border="1" cellpadding="5" align="center">
                     <tr>
-                        <td>Tên sản phẩm</td>
-                        <td><input type="text" id="name" name="name" size="45" value="<c:out value="${smartPhone.name}"/>"></td>
+                        <td>Tài khoản </td>
+                        <td><input type="text" id="username" name="username" size="45" ></td>
                     </tr>
                     <tr>
-                        <td>Giá</td>
-                        <td><input type="text" id="price" name="price" size="45" value="<c:out value="${smartPhone.price}"/>"></td>
+                        <td>Mật khẩu</td>
+                        <td><input type="password" id="password" name="password" size="45" ></td>
                     </tr>
                     <tr>
-                        <td>Nhà sản xuất</td>
-                        <td><input type="text" id="origin" name="origin" size="45" value="<c:out value="${smartPhone.origin}"/>"></td>
+                        <td>Nhập lại mật khẩu</td>
+                        <td><input type="password"  name="passWord" size="45" ></td>
                     </tr>
                     <tr>
-                        <td>Hệ điều hành</td>
-                        <td><input type="text" id="operatingSystem" name="operatingSystem" size="45" value="<c:out value="${smartPhone.operatingSystem}"/>"></td>
-                    </tr>
-                    <tr>
-                        <td>Ngôn ngữ máy</td>
-                        <td><input type="text" id="language" name="language" size="45" value="<c:out value="${smartPhone.language}"/>"></td>
-                    </tr>
-                    <tr>
-                        <td>Loại màn hình</td>
-                        <td><input type="text" id="screenType" name="screenType" size="45" value="<c:out value="${smartPhone.screenType}"/>"></td>
-                    </tr>
-                    <tr>
-                        <td>Độ phân giải</td>
-                        <td><input type="text" id="resolution" name="resolution" size="45" value="<c:out value="${smartPhone.resolution}"/>"></td>
-                    </tr>
-                    <tr>
-                        <td>Màn hình rộng</td>
-                        <td><input type="text" id="wideScreen" name="wideScreen" size="45" value="<c:out value="${smartPhone.wideScreen}"/>"></td>
-                    </tr>
-                    <tr>
-                        <td>Camera sau</td>
-                        <td><input type="text" id="rearCamera" name="rearCamera" size="45" value="<c:out value="${smartPhone.rearCamera}"/>"></td>
-                    </tr>
-                    <tr>
-                        <td>Camera trước</td>
-                        <td><input type="text" id="frontCamera" name="frontCamera" size="45" value="<c:out value="${smartPhone.frontCamera}"/>"></td>
-                    </tr>
-                    <tr>
-                        <td>ROM</td>
-                        <td><input type="text" id="ROM" name="ROM" size="45" value="<c:out value="${smartPhone.ROM}"/>"></td>
-                    </tr>
-                    <tr>
-                        <td>RAM</td>
-                        <td><input type="text" id="RAM" name="RAM" size="45" value="<c:out value="${smartPhone.RAM}"/>"></td>
-                    </tr>
-                    <tr>
-                        <td>Trọng lượng</td>
-                        <td><input type="text" id="weight" name="weight" size="45" value="<c:out value="${smartPhone.weight}"/>"></td>
-                    </tr>
-                    <tr>
-                        <td>Kích thước</td>
-                        <td><input type="text" id="size" name="size" size="45" value="<c:out value="${smartPhone.size}"/>"></td>
-                    </tr>
-                    <tr>
-                        <td>Loại pin</td>
-                        <td><input type="text" id="batteryType" name="batteryType" size="45" value="<c:out value="${smartPhone.batteryType}"/>"></td>
-                    </tr>
-                    <tr>
-                        <td>Dung lượng pin</td>
-                        <td><input type="text" id="batteryCapacity" name="batteryCapacity" size="45" value="<c:out value="${smartPhone.batteryCapacity}"/>"></td>
-                    </tr>
-                    <tr>
-                        <td>Link ảnh</td>
-                        <td><input type="text" id="pictureLink" name="pictureLink" size="45" value="<c:out value="${smartPhone.pictureLink}"/>"></td>
+                        <td colspan="2" align="center">
+                            <input type="submit" id="submit" value="Sửa thông tin">
+                        </td>
                     </tr>
                 </table>
             </form>
@@ -188,7 +136,7 @@
             <div class="card">
                 <div class="card-header">
                     <span class="glyphicon glyphicon-th-list"></span>
-                    <strong>Chủng Loại</strong>
+                    <strong>Các thể loại khác</strong>
                 </div>
                 <div class="list-group">
                     <a href="#" class="list-group-item">Điện thoại di động</a>

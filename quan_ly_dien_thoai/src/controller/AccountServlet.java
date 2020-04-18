@@ -33,6 +33,9 @@ public class AccountServlet extends HttpServlet {
             case "create":
                 createAccount(request, response);
                 break;
+            case "password":
+                updatePassword(request,response);
+                break;
         }
     }
 
@@ -53,6 +56,9 @@ public class AccountServlet extends HttpServlet {
                 break;
             case "create":
                 showCreateForm(request, response);
+                break;
+            case "password":
+                showUpdatePasswordForm(request,response);
                 break;
             default:
                 showLoginForm(request, response);
@@ -141,6 +147,17 @@ public class AccountServlet extends HttpServlet {
         }
     }
 
+    private void showUpdatePasswordForm(HttpServletRequest request,HttpServletResponse response){
+        try{
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("account/updatePassword.jsp");
+            requestDispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void updateAccount(HttpServletRequest request, HttpServletResponse response) {
         try {
             Account account = null;
@@ -156,6 +173,25 @@ public class AccountServlet extends HttpServlet {
             session.setAttribute("account", account);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("account/update.jsp");
             requestDispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updatePassword(HttpServletRequest request,HttpServletResponse response){
+        try{
+            Account account = null;
+//            HttpSession session = request.getSession();
+            int id = Integer.parseInt(request.getParameter("id"));
+            String password = request.getParameter("password");
+            account = new Account(id,password);
+//            session.removeAttribute("account");
+            accountService.updatePassword(account);
+//            session.setAttribute("account",account);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("account/updatePassword.jsp");
+            requestDispatcher.forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
