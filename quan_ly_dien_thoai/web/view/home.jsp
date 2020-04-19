@@ -75,7 +75,7 @@
                         </c:when>
                         <c:otherwise>
                             <a class="dropdown-item" href="/login?action=view&id=${account.getId()}">Thông tin tài khoản (<c:out value="${account.getName()}"/>) </a>
-                            <a class="dropdown-item" href="/login?action=update&id=${account.getId()}">Cập nhật thông tin tài khoản</a>
+                            <a class="dropdown-item" href="/login?action=update">Cập nhật thông tin tài khoản</a>
                             <a class="dropdown-item" href="/login?action=password&id=${account.getId()}">Đổi mật khẩu</a>
                             <a class="dropdown-item" href="/login?action=logout">Đăng xuất</a>
                         </c:otherwise>
@@ -113,6 +113,10 @@
                         <br>
                         <a href="/home?action=update&id=${smartPhone.id}">Edit</a>
                         <a href="/home?action=delete&id=${smartPhone.id}">Delete</a>
+                        <br>
+                        <a class="btn btn-success" href="/shopping?action=order&idProduct=${smartPhone.id}">
+                            Thêm vào giỏ
+                        </a>
                     </div>
                 </div>
             </div>
@@ -121,12 +125,10 @@
         <aside class="col-sm-3">
             <div class="poly-cart">
                 <div class="card">
-                    <div class="card-body">
-                        <img class="col-sm-5" src="https://demo.codegym.vn/web/15/layout-bootstrap/images/shoppingcart.gif"/>
-                        <ul class="col-sm-7">
-                            <li>0 items</li>
-                            <li>1000000</li>
-                            <li><a href="#">Xem giỏ hàng</a></li>
+                    <div class="card-body" align="center">
+                        <img class="col-sm-12" src="https://demo.codegym.vn/web/15/layout-bootstrap/images/shoppingcart.gif" width="154px" height="160px"/>
+                        <ul class="col-sm-12">
+                            <li><a href="/shopping">Xem giỏ hàng</a></li>
                         </ul>
                     </div>
                 </div>
@@ -151,9 +153,9 @@
                     <a href="#" class="list-group-item">Điện thoại di động</a>
                     <a href="#" class="list-group-item">Máy tính xách tay</a>
                     <a href="#" class="list-group-item">Máy tính để bàn</a>
-                    <a href="#" class="list-group-item">Quạt máy</a>
-                    <a href="#" class="list-group-item">Tivi</a>
-                    <a href="#" class="list-group-item">Tủ lạnh</a>
+                    <a href="#" class="list-group-item">Máy tính bảng</a>
+                    <a href="#" class="list-group-item">Phụ kiện điện thoai</a>
+                    <a href="#" class="list-group-item">Loa</a>
                 </div>
             </div>
         </aside>

@@ -55,7 +55,7 @@ public class AccountServiceImpl implements AccountService {
             callableStatement.setString(6,account.getPassword());
             callableStatement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            printSQLException(e);
         }
     }
 
@@ -77,7 +77,7 @@ public class AccountServiceImpl implements AccountService {
             callableStatement.setInt(5,account.getId());
             update = callableStatement.executeUpdate() >0;
         } catch (SQLException e) {
-            e.printStackTrace();
+            printSQLException(e);
         }
         return update;
     }
@@ -91,7 +91,7 @@ public class AccountServiceImpl implements AccountService {
             callableStatement.setString(2,account.getPassword());
             update = callableStatement.executeUpdate() > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
+            printSQLException(e);
         }
         return update;
     }
@@ -112,7 +112,7 @@ public class AccountServiceImpl implements AccountService {
                 account = new Account(name, phoneNumber, address, email);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            printSQLException(e);
         }
         return account;
     }
@@ -162,7 +162,7 @@ public class AccountServiceImpl implements AccountService {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            printSQLException(e);
         }
         return account;
     }

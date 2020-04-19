@@ -236,7 +236,7 @@
         <aside class="col-sm-3">
             <div class="poly-cart">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body row">
                         <img class="col-sm-5" src="https://demo.codegym.vn/web/15/layout-bootstrap/images/shoppingcart.gif"/>
                         <ul class="col-sm-7">
                             <li>0 items</li>
@@ -266,9 +266,9 @@
                     <a href="#" class="list-group-item">Điện thoại di động</a>
                     <a href="#" class="list-group-item">Máy tính xách tay</a>
                     <a href="#" class="list-group-item">Máy tính để bàn</a>
-                    <a href="#" class="list-group-item">Quạt máy</a>
-                    <a href="#" class="list-group-item">Tivi</a>
-                    <a href="#" class="list-group-item">Tủ lạnh</a>
+                    <a href="#" class="list-group-item">Máy tính bảng</a>
+                    <a href="#" class="list-group-item">Phụ kiện điện thoai</a>
+                    <a href="#" class="list-group-item">Loa</a>
                 </div>
             </div>
         </aside>

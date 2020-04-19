@@ -19,7 +19,6 @@ import java.util.List;
 @WebServlet(name = "SmartPhoneServlet",urlPatterns = "/home")
 public class SmartPhoneServlet extends HttpServlet {
     private SmartPhoneServiceImpl smartPhoneService = new SmartPhoneServiceImpl();
-    private AccountServiceImpl accountService = new AccountServiceImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
