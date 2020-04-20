@@ -68,9 +68,9 @@
                         Tài khoản
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/login?action=view&id=${account.getId()}">Thông tin tài khoản (<c:out value="${account.getName()}"/>) </a>
-                        <a class="dropdown-item" href="/login?action=update&id=${account.getId()}">Cập nhật thông tin tài khoản</a>
-                        <a class="dropdown-item" href="/login?action=password&id=${account.getId()}">Đổi mật khẩu</a>
+                        <a class="dropdown-item" href="/login?action=view">Thông tin tài khoản (<c:out value="${account.getName()}"/>) </a>
+                        <a class="dropdown-item" href="/login?action=update">Cập nhật thông tin tài khoản</a>
+                        <a class="dropdown-item" href="/login?action=password">Đổi mật khẩu</a>
                         <a class="dropdown-item" href="/login?action=logout">Đăng xuất</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
@@ -112,12 +112,10 @@
         <aside class="col-sm-3">
             <div class="poly-cart">
                 <div class="card">
-                    <div class="card-body row">
-                        <img class="col-sm-5" src="https://demo.codegym.vn/web/15/layout-bootstrap/images/shoppingcart.gif"/>
-                        <ul class="col-sm-7">
-                            <li>0 items</li>
-                            <li>1000000</li>
-                            <li><a href="#">Xem giỏ hàng</a></li>
+                    <div class="card-body" align="center">
+                        <img class="col-sm-12" src="https://demo.codegym.vn/web/15/layout-bootstrap/images/shoppingcart.gif" width="154px" height="160px"/>
+                        <ul class="col-sm-12">
+                            <li><a href="/shopping">Xem giỏ hàng</a></li>
                         </ul>
                     </div>
                 </div>

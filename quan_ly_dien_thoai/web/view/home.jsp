@@ -74,9 +74,9 @@
                             <a class="dropdown-item" href="/login?action=create">Đăng kí</a>
                         </c:when>
                         <c:otherwise>
-                            <a class="dropdown-item" href="/login?action=view&id=${account.getId()}">Thông tin tài khoản (<c:out value="${account.getName()}"/>) </a>
+                            <a class="dropdown-item" href="/login?action=view">Thông tin tài khoản (<c:out value="${account.getName()}"/>) </a>
                             <a class="dropdown-item" href="/login?action=update">Cập nhật thông tin tài khoản</a>
-                            <a class="dropdown-item" href="/login?action=password&id=${account.getId()}">Đổi mật khẩu</a>
+                            <a class="dropdown-item" href="/login?action=password">Đổi mật khẩu</a>
                             <a class="dropdown-item" href="/login?action=logout">Đăng xuất</a>
                         </c:otherwise>
                         </c:choose>

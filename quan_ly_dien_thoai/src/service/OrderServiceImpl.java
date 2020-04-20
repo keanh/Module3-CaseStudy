@@ -76,8 +76,10 @@ public class OrderServiceImpl implements OrderService {
             callableStatement.setInt(1,idAccount);
             ResultSet resultSet = callableStatement.executeQuery();
             while (resultSet.next()){
+                int id = resultSet.getInt("ordersmartphone.id");
                 int total = resultSet.getInt("total");
-                order = new Order(total);
+                int totalOrder = resultSet.getInt("dem");
+                order = new Order(id,total,totalOrder);
             }
         } catch (SQLException e) {
             e.printStackTrace();

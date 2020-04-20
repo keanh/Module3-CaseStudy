@@ -19,7 +19,7 @@
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Giỏ hàng</a>
+        <a class="navbar-brand" href="/shopping">Giỏ hàng</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,16 +45,16 @@
 
             <form class="form-inline my-2 my-lg-0" method="post" action="/home?action=search">
                 <div class="input-group input-group-sm">
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search..." name="search">
                     <div class="input-group-append">
-                        <button type="button" class="btn btn-secondary btn-number">
+                        <button type="submit" class="btn btn-secondary btn-number">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
                 </div>
-                <a class="btn btn-success btn-sm ml-3" href="cart.html">
+                <a class="btn btn-success btn-sm ml-3" href="/shopping">
                     <i class="fa fa-shopping-cart"></i> Cart
-                    <span class="badge badge-light">3</span>
+                    <span class="badge badge-light"><c:out value="${total.getTotalOrder()}"/></span>
                 </a>
             </form>
         </div>
@@ -128,7 +128,7 @@
                 <h5>About</h5>
                 <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
                 <p class="mb-0">
-                    Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
+                    Hãy Say-YES với các lời đề nghị! Việc càng khó càng nên nhận. Đó là cơ hội để bạn được học hỏi một thứ mới mà không phải đóng học phí, lại được trả tiền, được hỗ trợ và có thể phạm lỗi mà không phải móc tiền túi ra trả.
                 </p>
             </div>
 
@@ -159,14 +159,14 @@
                 <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
                 <ul class="list-unstyled">
                     <li><i class="fa fa-home mr-2"></i> My company</li>
-                    <li><i class="fa fa-envelope mr-2"></i> email@example.com</li>
-                    <li><i class="fa fa-phone mr-2"></i> + 33 12 14 15 16</li>
-                    <li><i class="fa fa-print mr-2"></i> + 33 12 14 15 16</li>
+                    <li><i class="fa fa-envelope mr-2"></i> keanh275@example.com</li>
+                    <li><i class="fa fa-phone mr-2"></i> 0866772027</li>
+                    <li><i class="fa fa-print mr-2"></i> 0913000995</li>
                 </ul>
             </div>
             <div class="col-12 copyright mt-3">
                 <p class="float-left">
-                    <a href="#">Back to top</a>
+                    <a href="/shopping">Back to top</a>
                 </p>
                 <p class="text-right text-muted">created with <i class="fa fa-heart"></i> by <a href="https://t-php.fr/43-theme-ecommerce-bootstrap-4.html"><i>t-php</i></a> | <span>v. 1.0</span></p>
             </div>

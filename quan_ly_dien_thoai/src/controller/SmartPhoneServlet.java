@@ -40,9 +40,6 @@ public class SmartPhoneServlet extends HttpServlet {
             case "search":
                 searchSmartPhoneSearchedByName(request, response);
                 break;
-//            case "nonSearch":
-//                searchWithOutAccount(request,response);
-//                break;
         }
     }
 
@@ -85,8 +82,13 @@ public class SmartPhoneServlet extends HttpServlet {
 
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
         try {
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("SmartPhone/create.jsp");
-            requestDispatcher.forward(request, response);
+            Account account = (Account) request.getSession().getAttribute("account");
+            if (account == null) {
+                response.sendRedirect("/login");
+            } else {
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("SmartPhone/create.jsp");
+                requestDispatcher.forward(request, response);
+            }
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -96,11 +98,16 @@ public class SmartPhoneServlet extends HttpServlet {
 
     private void showUpdateForm(HttpServletRequest request, HttpServletResponse response) {
         try {
-            int id = Integer.parseInt(request.getParameter("id"));
-            SmartPhone existingSmartPhone = smartPhoneService.selectSmartPhone(id);
-            request.setAttribute("smartPhone", existingSmartPhone);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("SmartPhone/update.jsp");
-            requestDispatcher.forward(request, response);
+            Account account = (Account) request.getSession().getAttribute("account");
+            if (account == null) {
+                response.sendRedirect("/login");
+            }else {
+                int id = Integer.parseInt(request.getParameter("id"));
+                SmartPhone existingSmartPhone = smartPhoneService.selectSmartPhone(id);
+                request.setAttribute("smartPhone", existingSmartPhone);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("SmartPhone/update.jsp");
+                requestDispatcher.forward(request, response);
+            }
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -110,11 +117,16 @@ public class SmartPhoneServlet extends HttpServlet {
 
     private void showDeleteForm(HttpServletRequest request, HttpServletResponse response) {
         try {
-            int id = Integer.parseInt(request.getParameter("id"));
-            SmartPhone existingSmartPhone = smartPhoneService.selectSmartPhone(id);
-            request.setAttribute("smartPhone", existingSmartPhone);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("SmartPhone/delete.jsp");
-            requestDispatcher.forward(request, response);
+            Account account = (Account) request.getSession().getAttribute("account");
+            if (account == null) {
+                response.sendRedirect("/login");
+            }else {
+                int id = Integer.parseInt(request.getParameter("id"));
+                SmartPhone existingSmartPhone = smartPhoneService.selectSmartPhone(id);
+                request.setAttribute("smartPhone", existingSmartPhone);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("SmartPhone/delete.jsp");
+                requestDispatcher.forward(request, response);
+            }
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -152,34 +164,29 @@ public class SmartPhoneServlet extends HttpServlet {
 
     private void createSmartPhone(HttpServletRequest request, HttpServletResponse response) {
         try {
-            Account account = (Account) request.getSession().getAttribute("account");
-            if (account == null) {
-                response.sendRedirect("/login");
-            } else {
-                String name = request.getParameter("name");
-                int price = Integer.parseInt(request.getParameter("price"));
-                String origin = request.getParameter("origin");
-                String operatingSystem = request.getParameter("operatingSystem");
-                String language = request.getParameter("language");
-                String screenType = request.getParameter("screenType");
-                String resolution = request.getParameter("resolution");
-                String wideScreen = request.getParameter("wideScreen");
-                String rearCamera = request.getParameter("rearCamera");
-                String frontCamera = request.getParameter("frontCamera");
-                String ROM = request.getParameter("ROM");
-                String RAM = request.getParameter("RAM");
-                String weight = request.getParameter("weight");
-                String size = request.getParameter("size");
-                String batteryType = request.getParameter("batteryType");
-                String batteryCapacity = request.getParameter("batteryCapacity");
-                String pictureLink = request.getParameter("pictureLink");
-                SmartPhone smartPhone = new SmartPhone(name, price, origin, operatingSystem, language, screenType, resolution, wideScreen,
-                        rearCamera, frontCamera, ROM, RAM, weight, size, batteryType, batteryCapacity, pictureLink);
-                smartPhoneService.insertSmartPhone(smartPhone);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("SmartPhone/create.jsp");
-                requestDispatcher.forward(request, response);
-            }
-        } catch (ServletException e) {
+            String name = request.getParameter("name");
+            int price = Integer.parseInt(request.getParameter("price"));
+            String origin = request.getParameter("origin");
+            String operatingSystem = request.getParameter("operatingSystem");
+            String language = request.getParameter("language");
+            String screenType = request.getParameter("screenType");
+            String resolution = request.getParameter("resolution");
+            String wideScreen = request.getParameter("wideScreen");
+            String rearCamera = request.getParameter("rearCamera");
+            String frontCamera = request.getParameter("frontCamera");
+            String ROM = request.getParameter("ROM");
+            String RAM = request.getParameter("RAM");
+            String weight = request.getParameter("weight");
+            String size = request.getParameter("size");
+            String batteryType = request.getParameter("batteryType");
+            String batteryCapacity = request.getParameter("batteryCapacity");
+            String pictureLink = request.getParameter("pictureLink");
+            SmartPhone smartPhone = new SmartPhone(name, price, origin, operatingSystem, language, screenType, resolution, wideScreen,
+                    rearCamera, frontCamera, ROM, RAM, weight, size, batteryType, batteryCapacity, pictureLink);
+            smartPhoneService.insertSmartPhone(smartPhone);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("SmartPhone/create.jsp");
+            requestDispatcher.forward(request, response);
+        }catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
@@ -188,54 +195,42 @@ public class SmartPhoneServlet extends HttpServlet {
 
     private void updateSmartPhone(HttpServletRequest request, HttpServletResponse response) {
         try {
-            Account account = (Account) request.getSession().getAttribute("account");
-            if (account == null) {
-                response.sendRedirect("/login");
-            } else {
-                int id = Integer.parseInt(request.getParameter("id"));
-                String name = request.getParameter("name");
-                int price = Integer.parseInt(request.getParameter("price"));
-                String origin = request.getParameter("origin");
-                String operatingSystem = request.getParameter("operatingSystem");
-                String language = request.getParameter("language");
-                String screenType = request.getParameter("screenType");
-                String resolution = request.getParameter("resolution");
-                String wideScreen = request.getParameter("wideScreen");
-                String rearCamera = request.getParameter("rearCamera");
-                String frontCamera = request.getParameter("frontCamera");
-                String ROM = request.getParameter("ROM");
-                String RAM = request.getParameter("RAM");
-                String weight = request.getParameter("weight");
-                String size = request.getParameter("size");
-                String batteryType = request.getParameter("batteryType");
-                String batteryCapacity = request.getParameter("batteryCapacity");
-                String pictureLink = request.getParameter("pictureLink");
-                SmartPhone smartPhone = new SmartPhone(id, name, price, origin, operatingSystem, language, screenType, resolution, wideScreen,
-                        rearCamera, frontCamera, ROM, RAM, weight, size, batteryType, batteryCapacity, pictureLink);
-                smartPhoneService.updateSmartPhone(smartPhone);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("SmartPhone/update.jsp");
-                requestDispatcher.forward(request, response);
-            }
-        } catch (ServletException e) {
-            e.printStackTrace();
+            int id = Integer.parseInt(request.getParameter("id"));
+            String name = request.getParameter("name");
+            int price = Integer.parseInt(request.getParameter("price"));
+            String origin = request.getParameter("origin");
+            String operatingSystem = request.getParameter("operatingSystem");
+            String language = request.getParameter("language");
+            String screenType = request.getParameter("screenType");
+            String resolution = request.getParameter("resolution");
+            String wideScreen = request.getParameter("wideScreen");
+            String rearCamera = request.getParameter("rearCamera");
+            String frontCamera = request.getParameter("frontCamera");
+            String ROM = request.getParameter("ROM");
+            String RAM = request.getParameter("RAM");
+            String weight = request.getParameter("weight");
+            String size = request.getParameter("size");
+            String batteryType = request.getParameter("batteryType");
+            String batteryCapacity = request.getParameter("batteryCapacity");
+            String pictureLink = request.getParameter("pictureLink");
+            SmartPhone smartPhone = new SmartPhone(id, name, price, origin, operatingSystem, language, screenType, resolution, wideScreen,
+                    rearCamera, frontCamera, ROM, RAM, weight, size, batteryType, batteryCapacity, pictureLink);
+            smartPhoneService.updateSmartPhone(smartPhone);
+            response.sendRedirect("/home");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private void deleteSmartPhone(HttpServletRequest request, HttpServletResponse response){
-        try{
-            Account account = (Account) request.getSession().getAttribute("account");
-            if(account == null){
-                response.sendRedirect("/login");
-            } else {
-                    int id = Integer.parseInt(request.getParameter("id"));
-                    smartPhoneService.selectSmartPhone(id);
-                    smartPhoneService.deleteSmartPhone(id);
-                    showHome(request,response);
-            }
-        } catch (IOException e) {
+        try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            smartPhoneService.selectSmartPhone(id);
+            smartPhoneService.deleteSmartPhone(id);
+            showHome(request, response);
+        } catch (NumberFormatException e) {
             e.printStackTrace();
         }
     }
 }
+

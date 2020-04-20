@@ -89,7 +89,8 @@ public class AccountServlet extends HttpServlet {
 
     private void showInformationAccount(HttpServletRequest request, HttpServletResponse response) {
         try {
-            int id = Integer.parseInt(request.getParameter("id"));
+            Account account = (Account) request.getSession().getAttribute("account");
+            int id = account.getId();
             Account existingAccount = accountService.selectAccount(id);
             request.setAttribute("account", existingAccount);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("account/view.jsp");
@@ -105,7 +106,6 @@ public class AccountServlet extends HttpServlet {
         try {
             Account account = (Account) request.getSession().getAttribute("account");
             int id = account.getId();
-//            int id = Integer.parseInt(request.getParameter("id"));
             Account existingAccount = accountService.selectAccount(id);
             request.setAttribute("account", existingAccount);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("account/update.jsp");
@@ -184,8 +184,8 @@ public class AccountServlet extends HttpServlet {
 
     private void updatePassword(HttpServletRequest request,HttpServletResponse response){
         try{
-            Account account = null;
-            int id = Integer.parseInt(request.getParameter("id"));
+            Account account = (Account) request.getSession().getAttribute("account");
+            int id = account.getId();
             String password = request.getParameter("password");
             account = new Account(id,password);
             accountService.updatePassword(account);

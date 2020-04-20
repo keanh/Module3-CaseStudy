@@ -10,20 +10,15 @@ public class Order {
     private int idProduct;
     private int idAccount;
     private int total;
+    private int totalOrder;
 
     public Order() {
     }
 
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
+        public Order(int id,int total,int totalOrder) {
+        this.id = id;
         this.total = total;
-    }
-
-    public Order(int total) {
-        this.total = total;
+        this.totalOrder = totalOrder;
     }
 
     public Order(int idProduct, String nameProduct, int price, String pictureLink) {
@@ -54,6 +49,22 @@ public class Order {
         this.phoneNumberAccount = phoneNumberAccount;
         this.idProduct = idProduct;
         this.idAccount = idAccount;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public int getTotalOrder() {
+        return totalOrder;
+    }
+
+    public void setTotalOrder(int totalOrder) {
+        this.totalOrder = totalOrder;
     }
 
     public String getPictureLink() {
