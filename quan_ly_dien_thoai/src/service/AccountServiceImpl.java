@@ -155,11 +155,29 @@ public class AccountServiceImpl implements AccountService {
                 String phoneNumber = resultSet.getString("phoneNumber");
                 String address = resultSet.getString("address");
                 String email = resultSet.getString("email");
+                account = new Account(id,name, phoneNumber, address, email);
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        }
+        return account;
+    }
+
+    public Account checkUser(String userName) {
+        Account account = null;
+        String query = "{Call checkUsername(?)}";
+        try (Connection connection = getConnection();
+             CallableStatement callableStatement = connection.prepareCall(query)) {
+            callableStatement.setString(1, userName);
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String phoneNumber = resultSet.getString("phoneNumber");
+                String address = resultSet.getString("address");
+                String email = resultSet.getString("email");
                 String username = resultSet.getString("username");
-                String password = resultSet.getString("password");
-                if (username.equals(userName) && password.equals(passWord)){
-                    account = new Account(id,name, phoneNumber, address, email);
-                }
+                account = new Account(id,name, phoneNumber, address, email,username);
             }
         } catch (SQLException e) {
             printSQLException(e);

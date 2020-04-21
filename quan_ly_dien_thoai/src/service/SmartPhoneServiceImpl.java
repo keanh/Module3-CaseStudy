@@ -131,7 +131,6 @@ public class SmartPhoneServiceImpl implements SmartPhoneService{
             callableStatement.setString(16,smartPhone.getBatteryCapacity());
             callableStatement.setString(17,smartPhone.getPictureLink());
             callableStatement.setInt(18,smartPhone.getId());
-
             rowUpdate =callableStatement.executeUpdate()>0;
         }catch (SQLException e){
             printSQLException(e);

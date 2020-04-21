@@ -162,13 +162,13 @@ public class AccountServlet extends HttpServlet {
 
     private void updateAccount(HttpServletRequest request, HttpServletResponse response) {
         try {
-            Account account = null;
             HttpSession session = request.getSession();
+            Account account = (Account) request.getSession().getAttribute("account");
             String name = request.getParameter("name");
             String phoneNumber = request.getParameter("phoneNumber");
             String address = request.getParameter("address");
             String email = request.getParameter("email");
-            int id = Integer.parseInt(request.getParameter("id"));
+            int id = account.getId();
             account = new Account(id, name, phoneNumber, address, email);
             session.removeAttribute("account");
             accountService.updateAccount(account);
@@ -206,16 +206,21 @@ public class AccountServlet extends HttpServlet {
             String email = request.getParameter("email");
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            Account account = new Account(name, phoneNumber, address, email, username, password);
-            accountService.insertAccount(account);
-            String userName = request.getParameter("username");
-            String passWord = request.getParameter("password");
-            Account check = accountService.selectInformationOfAccount(userName, passWord);
-            if (check != null) {
+            Account check = accountService.checkUser(username);
+            if (check != null && check.getUsername().equals(username)){
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("login/registration.jsp");
+                request.setAttribute("message", "Tài khoản đã tồn tại");
+                requestDispatcher.forward(request, response);
+            }else {
+                Account account = new Account(name, phoneNumber, address, email, username, password);
+                accountService.insertAccount(account);
+                Account account1 = accountService.selectInformationOfAccount(username,password);
                 HttpSession session = request.getSession();
-                session.setAttribute("account", check);
+                session.setAttribute("account", account1);
                 response.sendRedirect("/home");
             }
+        } catch (ServletException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

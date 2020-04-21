@@ -89,6 +89,7 @@
         <article class="col-sm-9">
             <caption><h3 align="center">Cập nhật sản phẩm</h3></caption>
             <form method="post">
+                <input type="hidden" id="id" name="id" size="45" value="<c:out value="${smartPhone.id}"/>">
                 <table border="1" cellpadding="5" align="center">
                     <tr>
                         <td>Tên sản phẩm</td>
