@@ -89,7 +89,7 @@
                             <td>Còn hàng</td>
                             <td align="center">1</td>
                             <td class="text-right"><c:out value="${smartphone.getPrice()}"/></td>
-                            <td class="text-right"><a class="btn btn-sm btn-danger" href="/shopping?action=delete&id=${smartphone.getIdProduct()}"><i class="fa fa-trash"></i> </a> </td>
+                            <td class="text-right"><a class="btn btn-sm btn-danger" href="/shopping?action=delete&id=${smartphone.getId()}"><i class="fa fa-trash"></i> </a> </td>
                         </tr>
                     </c:forEach>
                     <tr>

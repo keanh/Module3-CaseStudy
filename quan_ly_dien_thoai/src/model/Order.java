@@ -21,8 +21,8 @@ public class Order {
         this.totalOrder = totalOrder;
     }
 
-    public Order(int idProduct, String nameProduct, int price, String pictureLink) {
-        this.idProduct = idProduct;
+    public Order(int id, String nameProduct, int price, String pictureLink) {
+        this.id = id;
         this.nameProduct = nameProduct;
         this.price = price;
         this.pictureLink = pictureLink;

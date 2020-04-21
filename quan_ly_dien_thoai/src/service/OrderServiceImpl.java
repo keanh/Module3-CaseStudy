@@ -53,13 +53,13 @@ public class OrderServiceImpl implements OrderService {
             callableStatement.setInt(1,idAccount);
             ResultSet resultSet = callableStatement.executeQuery();
             while (resultSet.next()){
-                int idProduct = resultSet.getInt("smartphone.id");
+                int id = resultSet.getInt("ordersmartphone.id");
                 String productName = resultSet.getString("smartphone.name");
                 int price = resultSet.getInt("smartphone.price");
                 String pictureLink = resultSet.getString("smartphone.pictureLink");
                 String accountName = resultSet.getString("account.name");
                 String phoneNumber = resultSet.getString("account.phoneNumber");
-                order = new Order(idProduct,productName,price,pictureLink);
+                order = new Order(id,productName,price,pictureLink);
                 list.add(order);
             }
         } catch (SQLException e) {
